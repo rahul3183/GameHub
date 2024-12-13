@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { GameGrid } from "./components/GameGrid";
+import { NavBar } from "./components/NavBar";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <>
+      <div className="h-screen grid grid-rows-[auto_1fr] grid-cols-1 md:grid-cols-[auto_1fr]">
+        {/* Navbar */}
+        <nav className="row-span-1 col-span-3 bg-blue-500 text-white p-4 flex justify-between items-center">
+          <NavBar />
+        </nav>
 
-export default App
+        {/* Sidebar */}
+        <aside className="hidden md:block bg-gray-800 text-white p-4">
+          <ul className="space-y-2">
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Settings
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Profile
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Help
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        {/* Main Content */}
+        <main className="bg-gray-100 p-6 dc">
+          <h2 className="text-2xl font-semibold mb-4">Welcome to the App</h2>
+          <GameGrid />
+        </main>
+      </div>
+    </>
+  );
+}
