@@ -11,7 +11,7 @@ export default function App() {
         </nav>
 
         {/* Sidebar */}
-        <aside className="hidden md:block bg-gray-800 text-white p-4">
+        <aside className="hidden md:block dark:bg-gray-900 text-white p-4">
           <ul className="space-y-2">
             <li>
               <a href="#" className="hover:text-gray-300">
@@ -37,8 +37,7 @@ export default function App() {
         </aside>
 
         {/* Main Content */}
-        <main className="bg-gray-100 p-6 dc">
-          <h2 className="text-2xl font-semibold mb-4">Welcome to the App</h2>
+        <main className=" dark:bg-gray-800 p-6">
           <GameGrid />
         </main>
       </div>
