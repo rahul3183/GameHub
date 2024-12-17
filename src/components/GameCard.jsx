@@ -4,6 +4,7 @@ import MetacriticScore from "./MetacriticScore";
 
 export const GameCard = ({ game }) => {
   const getCroppedImage = (url) => {
+    if (!url) return;
     const index = url.indexOf("media/") + "media/".length;
     return url.slice(0, index) + "crop/600/400/" + url.slice(index);
   };

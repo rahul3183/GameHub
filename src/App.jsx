@@ -3,10 +3,12 @@ import GameGenres from "./components/GameGenres";
 import { GameGrid } from "./components/GameGrid";
 import { NavBar } from "./components/NavBar";
 import { PlatformSelector } from "./components/PlatformSelector";
+import { SortSelector } from "./components/SortSelector";
 
 export default function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [selectedPlatform, setSelectedPlatform] = useState(null);
+  const [selectOrdering, setSelectedOrdering] = useState(null);
 
   return (
     <>
@@ -27,12 +29,18 @@ export default function App() {
 
         {/* Main Content */}
         <main className=" dark:bg-gray-900 p-6">
-          <PlatformSelector
-            selectPlatform={(platform) => setSelectedGenre(platform)}
-          />
+          <div className="flex space-x-4">
+            <PlatformSelector
+              selectPlatform={(platform) => setSelectedPlatform(platform)}
+            />
+            <SortSelector
+              selectOrdering={(order) => setSelectedOrdering(order)}
+            />
+          </div>
           <GameGrid
             selectedGenre={selectedGenre}
             selectedPlatform={selectedPlatform}
+            selectedOrdering={selectOrdering}
           />
         </main>
       </div>

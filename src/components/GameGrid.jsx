@@ -4,7 +4,11 @@ import { CanceledError } from "axios";
 import { GameCard } from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-export const GameGrid = ({ selectedGenre, selectedPlatform }) => {
+export const GameGrid = ({
+  selectedGenre,
+  selectedPlatform,
+  selectedOrdering,
+}) => {
   const [gameData, setGameData] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -18,7 +22,11 @@ export const GameGrid = ({ selectedGenre, selectedPlatform }) => {
     axiosClient
       .get("/games", {
         signal: controller.signal,
-        params: { genres: selectedGenre, platforms: selectedPlatform },
+        params: {
+          genres: selectedGenre,
+          platforms: selectedPlatform,
+          ordering: selectedOrdering,
+        },
       })
       .then((res) => {
         setGameData(res.data.results);
@@ -32,7 +40,7 @@ export const GameGrid = ({ selectedGenre, selectedPlatform }) => {
       });
 
     return () => controller.abort();
-  }, [selectedGenre, selectedPlatform]);
+  }, [selectedGenre, selectedPlatform, selectedOrdering]);
 
   return (
     <>

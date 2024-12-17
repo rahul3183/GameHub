@@ -1,33 +1,18 @@
-import React, { useEffect, useState } from "react";
-import axiosClient from "../server/axios-client";
+import React, { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-export const PlatformSelector = ({ selectPlatform }) => {
-  const [platformData, setPlatformData] = useState([]);
-  const [error, setError] = useState("");
-  const [selected, setSelected] = useState("Platforms");
+export const SortSelector = ({ selectOrdering }) => {
+  const [selected, setSelected] = useState("Relevance");
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    setPlatformData([]);
-    axiosClient
-      .get("/platforms", {
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setPlatformData(res.data.results);
-        setError("");
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError("Failed to fetch platform, data.");
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  if (error) return;
+  const ordering = [
+    { value: "", label: "Relevance" },
+    { value: "name", label: "Name" },
+    { value: "-added", label: "Date added" },
+    { value: "-released", label: "Release date" },
+    { value: "metacritic", label: "Popularity" },
+    { value: "rating", label: "Average rating" },
+  ];
 
   return (
     <>
@@ -37,7 +22,7 @@ export const PlatformSelector = ({ selectPlatform }) => {
           onClick={() => setIsOpen(!isOpen)}
           className="w-full flex items-center justify-between bg-white border border-gray-300 rounded-md py-2 px-4 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600"
         >
-          <span>{selected}</span>
+          <span>Sort By : {selected}</span>
           {/* Down Arrow */}
           <BiChevronDown
             className={` transition-transform duration-300 ${
@@ -47,17 +32,17 @@ export const PlatformSelector = ({ selectPlatform }) => {
         </button>
         {isOpen && (
           <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-600">
-            {platformData.map((platform) => (
+            {ordering.map((order, index) => (
               <li
-                key={platform.id}
+                key={index}
                 onClick={() => {
-                  selectPlatform(platform.id);
-                  setSelected(platform.name);
+                  selectOrdering(order.value);
+                  setSelected(order.label);
                   setIsOpen(false);
                 }}
                 className={`cursor-pointer px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white dark:text-gray-200 dark:hover:bg-gray-600 `}
               >
-                {platform.name}
+                {order.label}
               </li>
             ))}
           </ul>

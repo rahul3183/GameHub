@@ -49,7 +49,7 @@ export const GameGenres = ({ selectedGenre, selectGenre }) => {
       <ul>
         {gameGenres.map((data) => (
           <li key={data.id}>
-            <div className="flex mb-6 cursor-pointer">
+            <div className="flex mb-4 cursor-pointer">
               <img
                 className="rounded-sm overflow-hidden w-8"
                 src={getCroppedImage(data.image_background)}
