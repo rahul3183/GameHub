@@ -6,6 +6,7 @@ import { PlatformSelector } from "./components/PlatformSelector";
 
 export default function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
 
   return (
     <>
@@ -26,8 +27,13 @@ export default function App() {
 
         {/* Main Content */}
         <main className=" dark:bg-gray-900 p-6">
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectPlatform={(platform) => setSelectedGenre(platform)}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </main>
       </div>
     </>

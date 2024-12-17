@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../server/axios-client";
 
-export const PlatformSelector = () => {
+export const PlatformSelector = ({ selectPlatform }) => {
   const [platformData, setPlatformData] = useState([]);
   const [error, setError] = useState("");
-  const [selected, setSelected] = useState("PC");
+  const [selected, setSelected] = useState("Platforms");
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -57,11 +57,12 @@ export const PlatformSelector = () => {
         </button>
         {isOpen && (
           <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-600">
-            {platformData.map((platform, index) => (
+            {platformData.map((platform) => (
               <li
                 key={platform.id}
                 onClick={() => {
-                  setSelected(option);
+                  selectPlatform(platform.id);
+                  setSelected(platform.name);
                   setIsOpen(false);
                 }}
                 className={`cursor-pointer px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white dark:text-gray-200 dark:hover:bg-gray-600 `}
