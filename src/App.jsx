@@ -1,44 +1,33 @@
+import { useState } from "react";
+import GameGenres from "./components/GameGenres";
 import { GameGrid } from "./components/GameGrid";
 import { NavBar } from "./components/NavBar";
+import { PlatformSelector } from "./components/PlatformSelector";
 
 export default function App() {
+  const [selectedGenre, setSelectedGenre] = useState(null);
+
   return (
     <>
       <div className="h-screen grid grid-rows-[auto_1fr] grid-cols-1 md:grid-cols-[auto_1fr]">
         {/* Navbar */}
-        <nav className="row-span-1 col-span-3 bg-blue-500 text-white p-4 flex justify-between items-center">
+        <nav className="row-span-1 col-span-3 text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white p-4 flex justify-between items-center">
           <NavBar />
         </nav>
 
         {/* Sidebar */}
-        <aside className="hidden md:block dark:bg-gray-900 text-white p-4">
-          <ul className="space-y-2">
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Settings
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Profile
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Help
-              </a>
-            </li>
-          </ul>
+        <aside className="hidden md:block  text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white  p-4 ">
+          <h1 className="mb-4 font-medium text-2xl">Home</h1>
+          <GameGenres
+            selectedGenre={selectedGenre}
+            selectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </aside>
 
         {/* Main Content */}
-        <main className=" dark:bg-gray-800 p-6">
-          <GameGrid />
+        <main className=" dark:bg-gray-900 p-6">
+          <PlatformSelector />
+          <GameGrid selectedGenre={selectedGenre} />
         </main>
       </div>
     </>

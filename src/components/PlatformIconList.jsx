@@ -24,9 +24,11 @@ export const PlatformIconList = ({ platforms }) => {
   };
   return (
     <>
-      <div className="dark:text-gray-600 text-gray-900 flex mt-4">
-        {platforms.map((platform) => (
-          <div className="mr-2">{IconMap[platform.slug]}</div>
+      <div className="dark:text-gray-600 text-gray-900 flex">
+        {platforms.map((platform, index) => (
+          <div key={index} className="mr-2">
+            {IconMap[platform.slug]}
+          </div>
         ))}
       </div>
     </>
