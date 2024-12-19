@@ -51,7 +51,7 @@ export const PlatformSelector = ({ selectPlatform }) => {
               <li
                 key={platform.id}
                 onClick={() => {
-                  selectPlatform(platform.id);
+                  selectPlatform(platform);
                   setSelected(platform.name);
                   setIsOpen(false);
                 }}

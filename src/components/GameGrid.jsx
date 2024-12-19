@@ -8,6 +8,7 @@ export const GameGrid = ({
   selectedGenre,
   selectedPlatform,
   selectedOrdering,
+  searchedQuery,
 }) => {
   const [gameData, setGameData] = useState([]);
   const [error, setError] = useState("");
@@ -26,6 +27,7 @@ export const GameGrid = ({
           genres: selectedGenre,
           platforms: selectedPlatform,
           ordering: selectedOrdering,
+          search: searchedQuery,
         },
       })
       .then((res) => {
@@ -40,7 +42,7 @@ export const GameGrid = ({
       });
 
     return () => controller.abort();
-  }, [selectedGenre, selectedPlatform, selectedOrdering]);
+  }, [selectedGenre, selectedPlatform, selectedOrdering, searchedQuery]);
 
   return (
     <>

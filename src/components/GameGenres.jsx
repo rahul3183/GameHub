@@ -56,7 +56,7 @@ export const GameGenres = ({ selectedGenre, selectGenre }) => {
                 alt={data.name}
               />
               <button
-                onClick={() => selectGenre(data.id)}
+                onClick={() => selectGenre(data)}
                 className={`ml-4 ${
                   selectedGenre == data.id ? "text-lg font-bold" : " text-md "
                 }`}
