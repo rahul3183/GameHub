@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameGenres from "./components/GameGenres";
 import { GameGrid } from "./components/GameGrid";
 import { NavBar } from "./components/NavBar";
@@ -12,6 +12,10 @@ export default function App() {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
   const [selectOrdering, setSelectedOrdering] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    document.title = "GameHub";
+  }, []);
 
   return (
     <>
