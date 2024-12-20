@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { PlatformSelector } from "./components/PlatformSelector";
 import { SortSelector } from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import Banner from "./components/Banner";
 
 export default function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -16,13 +17,13 @@ export default function App() {
     <>
       <div className="h-screen grid grid-rows-[auto_1fr] grid-cols-1 md:grid-cols-[auto_1fr]">
         {/* Navbar */}
-        <nav className="row-span-1 col-span-3 text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white p-4 flex justify-between items-center">
+        <nav className="p-4row-span-1 col-span-3 text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white py-6 p-8 flex justify-between items-center">
           <NavBar setSearch={(search) => setSearchQuery(search)} />
         </nav>
 
         {/* Sidebar */}
-        <aside className="hidden md:block  text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white  p-4 ">
-          <h1 className="mb-4 font-medium text-2xl">Home</h1>
+        <aside className="hidden md:block  text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white  p-8 ">
+          <h1 className="mb-4 font-bold text-2xl">Genres</h1>
           <GameGenres
             selectedGenre={selectedGenre?.id}
             selectGenre={(genre) => setSelectedGenre(genre)}
@@ -31,10 +32,17 @@ export default function App() {
 
         {/* Main Content */}
         <main className=" dark:bg-gray-900 p-6">
-          <div className="mb-4">
+          <div className="mb-6">
             <GameHeading
               selectedGenre={selectedGenre}
               selectedPlatform={selectedPlatform}
+            />
+          </div>
+          <div className="mb-6">
+            <Banner
+              promotionalText={
+                "Jump-start your library with games from Steam, PlayStation, Xbox or GOG. The more complete your profile is, the better it shows your interests."
+              }
             />
           </div>
           <div className="flex space-x-4">

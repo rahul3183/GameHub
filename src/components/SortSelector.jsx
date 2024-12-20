@@ -20,7 +20,7 @@ export const SortSelector = ({ selectOrdering }) => {
         <button
           id="custom-dropdown"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between bg-white border border-gray-300 rounded-md py-2 px-4 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600"
+          className="w-full flex items-center justify-between bg-white rounded-md py-2 px-4 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"
         >
           <span>Sort By : {selected}</span>
           {/* Down Arrow */}

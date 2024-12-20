@@ -12,17 +12,14 @@ export const GameCard = ({ game }) => {
 
   return (
     <>
-      <div className="bg-white rounded-lg dark:bg-gray-800 shadow-2xl">
+      <div className="bg-white rounded-lg dark:bg-gray-700 shadow-2xl">
         <img
           className="rounded-t-lg w-full  overflow-hidden cursor-pointer hover:brightness-75"
           src={getCroppedImage(game.background_image)}
           alt={game.name}
         />
-        <div className="p-5">
-          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {game.name}
-          </h3>
-          <div className="flex items-center justify-between mt-4">
+        <div className="px-4 mt-4">
+          <div className="flex items-center justify-between">
             <div>
               {
                 <PlatformIconList
@@ -34,6 +31,9 @@ export const GameCard = ({ game }) => {
               <MetacriticScore score={game.metacritic} />
             </div>
           </div>
+          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white mt-2 mb-8">
+            {game.name}
+          </h3>
         </div>
       </div>
     </>

@@ -20,7 +20,7 @@ export const ColorModeSwitch = () => {
           />
           <div
             className={`box block h-7 w-12 rounded-full ${
-              isChecked ? "bg-gray-800" : "bg-gray-300"
+              isChecked ? "bg-gray-700" : "bg-gray-300"
             }`}
           ></div>
           <div

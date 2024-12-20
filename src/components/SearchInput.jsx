@@ -7,7 +7,7 @@ export const SearchInput = ({ setSearch }) => {
   const ref = useRef(null);
   return (
     <>
-      <div className="relative">
+      <div className="relative h-full">
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -15,12 +15,12 @@ export const SearchInput = ({ setSearch }) => {
           }}
         >
           <div className="absolute inset-y-0 flex items-center ps-3">
-            <FaGamepad className="bg-gray-800" />
+            <FaGamepad />
           </div>
           <input
             ref={ref}
             placeholder="Search games"
-            className="p-2.5 h-full dark:bg-gray-800 text-gray-900 dark:text-white rounded-full px-10 focus:ring-2 focus:ring-blue-500"
+            className="p-3 h-full dark:bg-gray-700 text-gray-900 dark:text-white rounded-full px-10 focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"
