@@ -14,7 +14,7 @@ export const GameGrid = ({
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
-  const skeleton = [1, 2, 3, 4, 5, 6];
+  const skeleton = [1, 2, 3, 4, 5, 6, 7, 8];
 
   useEffect(() => {
     const controller = new AbortController();
@@ -48,8 +48,7 @@ export const GameGrid = ({
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 mb-20">
         {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-        {isLoading &&
-          skeleton.map((item) => <GameCardSkeleton key={item} count={3} />)}
+        {isLoading && skeleton.map((item) => <GameCardSkeleton key={item} />)}
         {gameData.map((data) => (
           <GameCard game={data} key={data.id} />
         ))}

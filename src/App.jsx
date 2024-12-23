@@ -21,7 +21,7 @@ export default function App() {
     <>
       <div className="h-screen grid grid-rows-[auto_1fr] grid-cols-1 md:grid-cols-[auto_1fr]">
         {/* Navbar */}
-        <nav className="p-4row-span-1 col-span-3 text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white py-6 p-8 flex justify-between items-center">
+        <nav className="row-span-1 col-span-3 text-gray-900 bg-gray-300  dark:bg-gray-900 dark:text-white py-6 p-8 flex justify-between items-center">
           <NavBar setSearch={(search) => setSearchQuery(search)} />
         </nav>
 

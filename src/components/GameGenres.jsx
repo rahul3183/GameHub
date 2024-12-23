@@ -36,37 +36,29 @@ export const GameGenres = ({ selectedGenre, selectGenre }) => {
 
   return (
     <>
-      {isLoading &&
-        skeleton.map((item) => (
-          <ul key={item}>
-            <li>
-              <div className="mb-6">
-                <GameCardSkeleton count={1} />
+      <div className="w-48">
+        <ul>
+          {gameGenres.map((data) => (
+            <li key={data.id}>
+              <div className="flex mb-3 cursor-pointer">
+                <img
+                  className="rounded-md overflow-hidden w-8 h-7"
+                  src={getCroppedImage(data.image_background)}
+                  alt={data.name}
+                />
+                <button
+                  onClick={() => selectGenre(data)}
+                  className={`ml-4 ${
+                    selectedGenre == data.id ? "text-lg font-bold" : " text-md "
+                  }`}
+                >
+                  <p className="whitespace-nowrap"> {data.name}</p>
+                </button>
               </div>
             </li>
-          </ul>
-        ))}
-      <ul>
-        {gameGenres.map((data) => (
-          <li key={data.id}>
-            <div className="flex mb-3 cursor-pointer">
-              <img
-                className="rounded-md overflow-hidden w-8 h-7"
-                src={getCroppedImage(data.image_background)}
-                alt={data.name}
-              />
-              <button
-                onClick={() => selectGenre(data)}
-                className={`ml-4 ${
-                  selectedGenre == data.id ? "text-lg font-bold" : " text-md "
-                }`}
-              >
-                {data.name}
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
